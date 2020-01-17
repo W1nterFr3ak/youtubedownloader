@@ -1,21 +1,22 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .yts.yt2  import youtube_search
+import json
 import time
 # Create your views here.
 
 
 def search(request):
-	template = 'ytsearch/base.html'
+	template = 'ytsearch/index.html'
 	if request.POST:
 		print(request.POST['search_val'])
 		red = youtube_search(request.POST['search_val'])
 	# time.sleep(5)
+		# print ([json.loads(i) for i in red[0]])
 		context = {
-			'videos':red[0],
+			'videos':[json.loads(i) for i in red[0]],
 			'playlist':red[1],
 			'channel':red[2],
-			'thumb':red[3],
 			'results':len(red[0])
 		}
 		return render(request, template, context)

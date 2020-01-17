@@ -1,94 +1,148 @@
-<html>
-  <head>
-    {% load static %}
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="author" content="colorlib.com">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" />
-    <link href="{% static 'css/main.css'%}" rel="stylesheet" />
-    
-  </head>
-  <body>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>WinterDownloads</title>
+<!-- 
+
+Timeless Template 
+
+http://www.templatemo.com/tm-517-timeless
+
+-->
+{% load static %}
+    <!-- load CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <!-- Google web font "Open Sans" -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <!-- <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}"> -->
+    <!-- https://getbootstrap.com/ -->
+    <link rel="stylesheet" href="{%static 'css/templatemo-style.css' %}">
+    <!-- Templatemo style -->
+</head>
+
+<body>
+
     <div class="container">
-      
-    <div class="s007">
-
-      <form method="POST" action=".">{% csrf_token %}
-        <div class="inner-form">
-          <div class="basic-search">
-            <div class="input-field">
-              <div class="icon-wrap">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
-                  <path d="M18.869 19.162l-5.943-6.484c1.339-1.401 2.075-3.233 2.075-5.178 0-2.003-0.78-3.887-2.197-5.303s-3.3-2.197-5.303-2.197-3.887 0.78-5.303 2.197-2.197 3.3-2.197 5.303 0.78 3.887 2.197 5.303 3.3 2.197 5.303 2.197c1.726 0 3.362-0.579 4.688-1.645l5.943 6.483c0.099 0.108 0.233 0.162 0.369 0.162 0.121 0 0.242-0.043 0.338-0.131 0.204-0.187 0.217-0.503 0.031-0.706zM1 7.5c0-3.584 2.916-6.5 6.5-6.5s6.5 2.916 6.5 6.5-2.916 6.5-6.5 6.5-6.5-2.916-6.5-6.5z"></path>
-                </svg>
-              </div>
-              <input id="search" type="text" placeholder="Search..." name="search_val" value="python" />
-              <div class="result-count">
-                <span>{{ results }} </span>results</div>
+        <div class="row">
+            <div class="col-lg-12">
+                <header class="text-center tm-site-header">
+                    <div class="tm-site-logo"></div>
+                    <h1 class="pl-4 tm-site-title">WinLoad</h1>
+                </header>
             </div>
-            <ul class="list-group bg-success">
-                {% if videos %}
-                <div class='d-inline-block'>
-                  {% for i in videos %}
-                    {% for im in thumb%}
-                    
-                  <a href = "#" class = "thumbnail">
-                           <img src = '{{im }}' alt = "Generic placeholder thumbnail">
-                           <li class="list-group-item">{{ i }}</li>
-                        </a>
-                
-               
-                  {% endfor %}
-                  {% endfor %}
-                </div>
-                {% endif %}
-              </ul>
-          </div>
         </div>
-      </form>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="tm-video-container">
+                    <video id="tm-welcome-video" class="tm-welcome-video" autoplay="" loop="" muted="">
+                        <source src="{% static 'videos/video.mp4' %}" type="video/mp4"> Your browser does not support the video tag.
+                        </video>
+                        <div id="tm-video-loader"></div>
+                        <div id="tm-video-text-overlay" class="tm-video-text-overlay d-none">
+                            <h1>
+                                <div id="rotate" class="tm-video-text">
+                                    <div>I AM WINTER</div>
+                                    <div>I am invincible</div>
+                                    <div>Quite unbeatable</div>
+                                    <div>and indestructible</div>
+                                </div>
+                            </h1>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container tm-container-2">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="tm-welcome-text">Search for videos below</h2>
+                </div>
+            </div>
+
+            
+
+      {% block content %}
+      {% endblock %}
+   <!--    <hr>
+            <div class="row tm-section-mb tm-section-mt">
+                <div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                    <h3 class="mt-2 mb-3 tm-text-gray">Nunc dictum consequat</h3>
+                    <p>Integer imperdiet aliquet lobortis. In in metus risus. Pellentesque pulvinar venenatis dui id rutrum. In
+                    pharetra neque et eleifend venenatis.</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                    <h3 class="mt-2 mb-3 tm-text-gray">Morbi ultrices tellus</h3>
+                    <p>Integer imperdiet aliquet lobortis. In in metus risus. Pellentesque pulvinar venenatis dui id rutrum. In
+                    pharetra neque et eleifend venenatis.</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <h3 class="mt-2 mb-3 tm-text-gray">Suspendisse dolor tortor</h3>
+                    <p>Integer imperdiet aliquet lobortis. In in metus risus. Pellentesque pulvinar venenatis dui id rutrum. In
+                    pharetra neque et eleifend venenatis.</p>
+                </div>
+            </div>
+            <hr> -->
+      <div class="row tm-section-mt">
+                <div class="col-lg-6">
+                    <h3 class="mb-4 tm-text-gray">Our Location</h3>
+                    <!-- GOOGLE MAP -->
+                    <div id="google-map" class="text-center mb-5">
+                    <!-- How to change your own map point
+                           1. Go to Google Maps
+                           2. Click on your location point
+                           3. Click "Share" and choose "Embed map" tab
+                           4. Copy only URL and paste it within the src="" field below
+                       -->
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3647.3030413476204!2d100.5641230193719!3d13.757206847615207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf51ce6427b7918fc!2sG+Tower!5e0!3m2!1sen!2sth!4v1510722015945"
+                       class="google-map-iframe" width="500" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                   </div>
+               </div>
+               <div class="col-lg-6 mb-5">
+                <h3 class="mb-4 tm-text-gray">Contact Us</h3>
+                <form action="#contact" method="post" class="tm-contact-form">
+                    <div class="row">
+                        <div class="form-group col-xl-6">
+                            <input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="Name..." required/>
+                        </div>
+                        <div class="form-group col-xl-6">
+                            <input type="email" id="contact_email" name="contact_email" class="form-control" placeholder="Email..." required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="contact_message" name="contact_message" class="form-control" rows="6" placeholder="Your Message..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn  tm-btn-send">Send It</button>
+                </form>
+            </div>
+        </div>
+      <!-- Footer -->
+        <footer class="row mt-5 mb-5">
+            <div class="col-lg-12">
+                <p class="text-center tm-text-gray tm-copyright-text mb-0">Copyright &copy;
+                    <span class="tm-current-year">2018</span> Your Company Name 
+                    
+                    | Design: <a href="http://templatemo.com/tm-517-timeless" class="tm-text-white">Timeless</a>
+                </p>
+            </div>
+        </footer>
     </div>
-  </div>
-
-    <script src="js/extention/choices.js"></script>
-    <script>
-      const customSelects = document.querySelectorAll("select");
-      const deleteBtn = document.getElementById('delete')
-      const choices = new Choices('select',
-      {
-        searchEnabled: false,
-        removeItemButton: true,
-        itemSelectText: '',
-      });
-      for (let i = 0; i < customSelects.length; i++)
-      {
-        customSelects[i].addEventListener('addItem', function(event)
-        {
-          if (event.detail.value)
-          {
-            let parent = this.parentNode.parentNode
-            parent.classList.add('valid')
-            parent.classList.remove('invalid')
-          }
-          else
-          {
-            let parent = this.parentNode.parentNode
-            parent.classList.add('invalid')
-            parent.classList.remove('valid')
-          }
-        }, false);
-      }
-      deleteBtn.addEventListener("click", function(e)
-      {
-        e.preventDefault()
-        const deleteAll = document.querySelectorAll('.choices__button')
-        for (let i = 0; i < deleteAll.length; i++)
-        {
-          deleteAll[i].click();
-        }
-      });
-
-    </script>
+    <!-- Optional JavaScript -->
     
-  </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <!-- <script src="js/jquery-3.2.1.slim.min.js"></script> -->
+    <script src="{% static 'js/templatemo-script.js' %}"></script>
+
+</body>
 </html>

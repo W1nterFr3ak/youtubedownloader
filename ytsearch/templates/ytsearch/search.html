@@ -1,0 +1,12 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/search.css' %}">
+<div class="container">
+<form class="searh" method='post' action='.'>{% csrf_token %}
+  <div class="search__wrapper">
+    <input type="text" name="search_val" placeholder="Search for..." class="search__field">
+    <button type="submit" class="fa fa-search search__icon" value=''></button>
+   
+  </div>
+</form>
+</div>
+

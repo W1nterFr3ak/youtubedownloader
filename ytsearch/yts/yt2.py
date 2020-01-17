@@ -27,6 +27,8 @@ def youtube_search(query, max_results=30):
 	# channel, playlist metadata 
 	videos = []	
 	playlists = [] 
+	vurl = {}
+	vl = []
 	thumb =[]
 	channels = [] 
 	
@@ -36,6 +38,8 @@ def youtube_search(query, max_results=30):
 		if result['id']['kind'] == "youtube#video": 
 			videos.append(result["snippet"]["title"])
 			thumb.append(result['snippet']['thumbnails']['default']['url'])
+			vurl["id"], vurl["name"],vurl["desc"],vurl["thumb"] =result["id"]["videoId"], result["snippet"]["title"], result['snippet']['description'],result['snippet']['thumbnails']['default']['url']
+			vl.append(json.dumps(vurl))
 
 
 
@@ -58,9 +62,12 @@ def youtube_search(query, max_results=30):
 								result["id"]["channelId"], 
 								result['snippet']['description'], 
 								result['snippet']['thumbnails']['default']['url'])) 
+
+	# for i in [json.loads(c) for c in vl]:
+	# 	print(i["id"])
+	# 	print("\n\n")
 	# print(videos)
-	# print(videos)
-	return videos,channels, playlists, thumb
+	return vl,channels, playlists
 # 	for key, val in enumerate(videos):
 # 		print(f"Videos {key}:{val}") 
 # 	print("Channels:\n", "\n".join(channels), "\n") 
