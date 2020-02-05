@@ -1,3 +1,5 @@
 # youtubedownloader
 
-in progress
+search complete
+download pending
+pagination pending
