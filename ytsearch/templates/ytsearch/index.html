@@ -1,11 +1,12 @@
 
     {% extends 'ytsearch/base.html' %}
+
     {% block content %}
     {% load static %}
+    {% include 'ytsearch/search.html' %}
 
-        {% include 'ytsearch/search.html' %}
             {% if videos %}
-                
+
                 {% for i in videos %}
 
 
@@ -30,10 +31,10 @@
                                       <p class="text-info">
                                      <img src="{{ i.thumb }}"> </p>
                                      <p><h5>{{ i.desc }}</h5></p>
-                                      
+
                                         <!-- <a href="#" rel="modal:close">Close</a> -->
-                                     
-                                      
+
+
                                     </div>
 
                                 </div>
@@ -101,9 +102,9 @@
                 </div>
             </div>
             <!--  row -->
-            
-            
+
+
         <hr>
-        
+
 {% endblock %}
     <!-- .container -->
