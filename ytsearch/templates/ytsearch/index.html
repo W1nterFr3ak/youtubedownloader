@@ -8,8 +8,6 @@
             {% if videos %}
 
                 {% for i in videos %}
-
-
             <div class="row tm-section-mb">
                 <div class="col-lg-12">
                     <div class=" tm-timeline-item">
@@ -18,93 +16,36 @@
                             <div class="tm-timeline-connector">
                                 <p class="mb-0">&nbsp;</p>
                             </div>
+                            {% if not error %}
                             <div class="tm-timeline-description-wrap">
                                 <div class="tm-bg-dark tm-timeline-description">
                                     <h3 class="tm-text-green tm-font-400">{{ i.name }}</h3>
                                     <p>{{ i.desc }}</p>
                                     <p class="tm-text-green float-right mb-0">
-                                      <p><a href="#ex1" rel="modal:open" class="btn btn-primary">download</a></p>
+                                        <form method="post" action="{% url 'download' %}">{% csrf_token %}
+                                      <!-- <p><a href="{% url 'download' %}" rel="modal:open" name="sassy" class="btn btn-primary" value="{{ i.id }}">download</a></p> -->
+                                      <button name="savage" type="submit" value="{{ i.id }}" class="btn btn-primary">download</button>
+                                      </form>
                                     </p>
-
-
                                     <div id="ex1" class="modal">
                                       <p class="text-info">
                                      <img src="{{ i.thumb }}"> </p>
                                      <p><h5>{{ i.desc }}</h5></p>
-
-                                        <!-- <a href="#" rel="modal:close">Close</a> -->
-
-
                                     </div>
-
                                 </div>
                             </div>
-                        </div>
-
-                    <div class="tm-timeline-connector-vertical"></div>
-                    </div>
-
-     {% endfor %}
-
-{% endif %}
-
-                   <!--  <div class="tm-timeline-item">
-                        <div class="tm-timeline-item-inner">
-                            <img src="{% static 'img/img-02.jpg' %}" alt="Image" class="rounded-circle tm-img-timeline">
-                            <div class="tm-timeline-connector">
-                                <p class="mb-0">&nbsp;</p>
-                            </div>
-                            <div class="tm-timeline-description-wrap">
-                                <div class="tm-bg-dark-light tm-timeline-description">
-                                    <h3 class="tm-text-cyan tm-font-400">Vestibulum ante ipsum primis</h3>
-                                    <p>In imperdiet nisl quis sapien pellentesque, non rhoncus elit sollicitudin. Donec pharetra egestas magna at eleifend. Sed non magna vitae enim tempus faucibus.</p>
-                                    <p class="tm-text-cyan float-right mb-0">Another Story . 9 July 2018</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tm-timeline-connector-vertical"></div>
-                    </div>
-
-                    <div class="tm-timeline-item">
-                        <div class="tm-timeline-item-inner">
-                            <img src="{% static 'img/img-03.jpg' %}" alt="Image" class="rounded-circle tm-img-timeline">
-                            <div class="tm-timeline-connector">
-                                <p class="mb-0">&nbsp;</p>
-                            </div>
-                            <div class="tm-timeline-description-wrap">
-                                <div class="tm-bg-dark tm-timeline-description">
-                                    <h3 class="tm-text-yellow tm-font-400">Pellentesque accumsan convallis</h3>
-                                    <p>Suspendisse felis massa, maximus sed mauris at, elementum fermentum nisl. Aliquam quis elit vel ipsum ornare sollicitudin. Nulla et dolor eget nisi varius convallis.</p>
-                                    <p class="tm-text-yellow float-right mb-0">Latest News . 30 June 2018</p>
-                                </div>
-                            </div>
+                            {% else %}
+                            <p>{{ error }}</p>
+                            {% endif %}
                         </div>
                     <div class="tm-timeline-connector-vertical"></div>
                     </div>
+                {% endfor %}
 
-                    <div class="tm-timeline-item">
-                        <div class="tm-timeline-item-inner">
-                            <img src="{% static 'img/img-04.jpg' %}" alt="Image" class="rounded-circle tm-img-timeline">
-                            <div class="tm-timeline-connector">
-                                <p class="mb-0">&nbsp;</p>
-                            </div>
-                            <div class="tm-timeline-description-wrap">
-                                <div class="tm-bg-dark-light tm-timeline-description">
-                                    <h3 class="tm-text-orange tm-font-400">Lorem ipsum dolor sit amet</h3>
-                                    <p>Phasellus at quam facilisis sem congue lacinia. Fusce risus velit, bibendum in magna eu, sollicitudin pellentesque dolor. Nulla facilisi. Fusce libero mauris, maximus et liqula at.</p>
-                                    <p class="tm-text-orange float-right mb-0">New Project . 22 June 2018</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div> -->
-
+            {% endif %}
                 </div>
             </div>
-            <!--  row -->
-
-
         <hr>
 
 {% endblock %}
-    <!-- .container -->
+
